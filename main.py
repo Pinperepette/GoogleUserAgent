@@ -18,14 +18,9 @@ def googlebot():
         headers = {'User-agent':'Mozilla/5.0 (compatible; Googlebot/2.1; http://www.google.com/bot.html)'}
         r = requests.get(url, headers=headers)    
         soup = BeautifulSoup(r.text , "lxml")
-        try:
-            t = soup.find('main').text
-            title = soup.find('title').text
-            return render_template('testo.html', cursor=t, title=title)
-        except:
-            t = soup.find('body').text
-            title = soup.find('title').text
-            return render_template('testo.html', cursor=t, title=title)
+        t = soup.find('main').text
+        title = soup.find('title').text
+        return render_template('testo.html', cursor=t, title=title)
 
 
 if __name__ == '__main__':
